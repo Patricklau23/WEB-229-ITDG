@@ -9,13 +9,12 @@ import { ContactComponent } from './pages/contact/contact.component';
 
 //set up pathing for routings -> go up to header (nav bar) href change the path e.g /home
 const routes: Routes = [
-{path:'home',component:HomeComponent},
-{path:'survey',component:SurveyListComponent},
-{path:'login',component:LoginComponent},
-{path:'signup',component: SignupComponent},
-{path:'contact',component: ContactComponent},
+{path:'home',component:HomeComponent, data: {title:'Create Your Own ONLINE SURVEY'}},
+{path:'survey',component:SurveyListComponent, data: {title:'Survey Templates'}},
+{path:'login',component:LoginComponent,data: {title: 'Log in'}},
+{path:'signup',component: SignupComponent,data: {title: 'Register'}},
+{path:'contact',component: ContactComponent,data: {title: 'Contact Us'}},
 {path: '', redirectTo: '/home',pathMatch:'full'},
-
 ];
 
 @NgModule({

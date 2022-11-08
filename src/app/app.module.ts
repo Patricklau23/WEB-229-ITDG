@@ -10,6 +10,7 @@ import { SurveyListComponent } from './pages/survey-list/survey-list.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ContactComponent } from './pages/contact/contact.component';
+import { BasePageComponent } from './partials/base-page/base-page.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { ContactComponent } from './pages/contact/contact.component';
     SurveyListComponent,
     LoginComponent,
     SignupComponent,
-    ContactComponent
+    ContactComponent,
+    BasePageComponent
   ],
   imports: [
     BrowserModule,
