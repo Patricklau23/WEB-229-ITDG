@@ -2,7 +2,8 @@
 <div class="row h-100 justify-content-center align-items-center">
     <div class="col-lg-5">
 <div class="form-group" action="" method="post">
-<form>
+  <form>
+  
     <div>
         <input type="text" id="text" class="form-control" placeholder="Your Survey Topic" aria-label="Text" aria-describedby="basic-addon1">
      </div>
@@ -48,15 +49,14 @@
         <input type="text" id="text" class="form-control" value= "{{row.question}}" aria-label="Text" aria-describedby="basic-addon1" disabled>
         <input type="text" id="text" class="form-control" value= "{{row.answer}}" aria-label="Text" aria-describedby="basic-addon1" >
             <button
-               type="button"
-               class="btn btn-secondary btn-sm"
-               data-mdb-ripple-color="dark">
+               type="button" (click)= "onEdit(row)" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+               class="btn btn-primary" >
                Edit
            </button>
+
            <button
                type="button" (click)="deleteAllSurvey(row)" 
-               class="btn btn-secondary btn-sm"
-               data-mdb-ripple-color="dark">
+               class="btn btn-primary">
                Delete
            </button>
         </div>
@@ -66,7 +66,7 @@
     <div class="p-4"></div>
 <div class="text-center">
    <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+<button type="button" (click)="clickAddSurvey()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
     Add a new question
   </button>
   
@@ -75,34 +75,52 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Create your Question and Answer</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Build Your Question</h5>
         </div>
         <div class="modal-body">
             <form [formGroup]="formValue">
                 <div class="mb-3">
-                    <label for="recipient-name" class="col-form-label">Question:</label>
+                    <label for="question-name" class="col-form-label">Question:</label>
                     <input type="text" formControlName= "question" class="form-control" id="InputQuestion">
                   </div>
             </form>
         </div>
         <div class="modal-footer">
           <button type="button" id= "close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" (click)="postSurveyDetails()" class="btn btn-primary">Save changes</button>
+          <button type="button" *ngIf="showUpdate" (click)="updateSurveyDetails()" class="btn btn-primary">Update</button>
+           <button type="button" *ngIf="showAdd" (click)="postSurveyDetails()" class="btn btn-primary">Add</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-  
-        <div class="p-2"></div>
-        <div class= "text-center">
+<div class="p-3"></div>
+  <div class="row">
+    <div class="col-6">
+        <label for="startDate">Active Date</label>
+        <input id="startDate" class="form-control" type="date" />
+    </div>
+      <div class="col-6">
+        <label for="startDate">End Date</label>
+        <input id="startDate" class="form-control" type="date" />
+    </div>
+  </div>
+
+
+  <div class="p-3"></div>
+
+  <div class="row justify-content-md-center">
+        <div class= "col col-lg-2">
             <button type="button" class="btn btn-primary">
                 FINISH!
             </button>
+        </div>
+         <div class="col col-lg-2">
              <button type="cancel" (click)="CancelBtn()" class="btn btn-primary">
                  Cancel
             </button>
-        </div>
-       
-</form>
+          </div>
+       </div>
+    
+  </form>
 </div>

@@ -15,7 +15,9 @@ export class ActivesurveyComponent implements OnInit {
   formValue !: FormGroup;
   surveyModelObj: SurveyModel = new SurveyModel();
   surveyData !: any;
-  constructor(private formbuilder: FormBuilder,   private api : ApiService,  private router: Router)
+  showAdd!: boolean;
+  showUpdate !: boolean;
+  constructor(private formbuilder: FormBuilder, private api : ApiService,  private router: Router)
   {
 
   } 
@@ -23,15 +25,20 @@ export class ActivesurveyComponent implements OnInit {
   ngOnInit(): void {
     this.formValue = this.formbuilder.group({
     question : [''],
-    answer:['']
+    answer:[''],
     })
     this.getAllSurvey();
+   }
+   clickAddSurvey(){
+    this.formValue.reset();
+    this.showAdd = true;
+    this.showUpdate = false;
    }
 
    //post function - for posting data to json database
    postSurveyDetails(){
+    //make this json obj as formvalue input 
     this.surveyModelObj.question = this.formValue.value.question;
-
     this.api.postSurvey(this.surveyModelObj).subscribe(res=>{
       console.log(res);
       alert("Survey Added Successfully")
@@ -42,15 +49,14 @@ export class ActivesurveyComponent implements OnInit {
       this.formValue.reset();
       //once the data is post, run this function to get the data to show on table instantly 
       this.getAllSurvey();
-      
-     
-  
     },
+    
     err=>{
       alert("Something Went wrong")
     })
 
    }
+
 
    //get function - for getting data from json database to show on html table 
    getAllSurvey(){
@@ -58,6 +64,7 @@ export class ActivesurveyComponent implements OnInit {
     .subscribe(res=>{
       this.surveyData = res;
     })
+    
    }
 
    //delete function - for deleting data
@@ -68,11 +75,42 @@ export class ActivesurveyComponent implements OnInit {
       //Get the most updated data on json once click delete btn 
       this.getAllSurvey();
     })
+
    }
    //Cancel and redirect to home
    CancelBtn():void{
     this.router.navigateByUrl('/home');
    }
+
+   //mainly show update button and show question
+   onEdit(row:any){
+    this.showAdd = false;
+    this.showUpdate = true;
+    this.surveyModelObj.id = row.id;
+    //set formvalue is equal to the row's question
+    this.formValue.controls['question'].setValue(row.question);
+   }
+
+   //put function , use to update information 
+   updateSurveyDetails(){
+    //json database object = form input value, display update value on form 
+    this.surveyModelObj.question = this.formValue.value.question;
+
+    this.api.updateSurvey(this.surveyModelObj, this.surveyModelObj.id).
+    subscribe(res=>{
+      alert("Updated Successfully");
+      let ref = document.getElementById('close')
+      ref?.click();
+      //reset the form
+      this.formValue.reset();
+      //once the data is post, run this function to get the data to show on table instantly 
+      this.getAllSurvey();
+    },
+      err=>{
+        alert("Something Went wrong")
+      })
+   
+  }
 
 }
 
