@@ -1,0 +1,108 @@
+<div class="p-4"></div>
+<div class="row h-100 justify-content-center align-items-center">
+    <div class="col-lg-5">
+<div class="form-group" action="" method="post">
+<form>
+    <div>
+        <input type="text" id="text" class="form-control" placeholder="Your Survey Topic" aria-label="Text" aria-describedby="basic-addon1">
+     </div>
+     <div class="p-2"></div>
+     <div>
+        <textarea class="form-control" id="exampleFormControlTextarea1" placeholder="Description of your survey" rows="3"></textarea>
+      </div>
+      
+      
+      <!-- <div>
+        <input type="text" id="text" class="form-control" placeholder="Let's edit this!" aria-label="Text" aria-describedby="basic-addon1" disabled>
+     </div>
+     <div>
+        <input type="text" id="text" class="form-control" aria-label="Text" aria-describedby="basic-addon1">
+     </div> -->
+
+     <!-- <div>
+        <input type="text" id="text" class="form-control" placeholder="What is your last name?" aria-label="Text" aria-describedby="basic-addon1">
+     </div>
+
+     <div>
+        <input type="text" id="text" class="form-control"  aria-label="Text" aria-describedby="basic-addon1">
+     </div>
+    <div class="float-start">
+        <button
+            type="button"
+            class="btn btn-secondary btn-sm"
+            data-mdb-ripple-color="dark">
+            Edit
+        </button>
+        <button
+            type="button"
+             class="btn btn-secondary btn-sm"
+            data-mdb-ripple-color="dark">
+            Delete
+        </button>
+    </div> -->
+
+
+
+    <div class="p-2"></div>
+    <div *ngFor="let row of surveyData">
+        <input type="text" id="text" class="form-control" value= "{{row.question}}" aria-label="Text" aria-describedby="basic-addon1" disabled>
+        <input type="text" id="text" class="form-control" value= "{{row.answer}}" aria-label="Text" aria-describedby="basic-addon1" >
+            <button
+               type="button"
+               class="btn btn-secondary btn-sm"
+               data-mdb-ripple-color="dark">
+               Edit
+           </button>
+           <button
+               type="button" (click)="deleteAllSurvey(row)" 
+               class="btn btn-secondary btn-sm"
+               data-mdb-ripple-color="dark">
+               Delete
+           </button>
+        </div>
+    
+
+
+    <div class="p-4"></div>
+<div class="text-center">
+   <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Add a new question
+  </button>
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Create your Question and Answer</h5>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="formValue">
+                <div class="mb-3">
+                    <label for="recipient-name" class="col-form-label">Question:</label>
+                    <input type="text" formControlName= "question" class="form-control" id="InputQuestion">
+                  </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" id= "close" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" (click)="postSurveyDetails()" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
+        <div class="p-2"></div>
+        <div class= "text-center">
+            <button type="button" class="btn btn-primary">
+                FINISH!
+            </button>
+             <button type="cancel" (click)="CancelBtn()" class="btn btn-primary">
+                 Cancel
+            </button>
+        </div>
+       
+</form>
+</div>

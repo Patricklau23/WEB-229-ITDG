@@ -11,6 +11,14 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/signup/signup.component';
 import { ContactComponent } from './pages/contact/contact.component';
 import { BasePageComponent } from './partials/base-page/base-page.component';
+import { ButtonComponent } from './partials/button/button.component';
+import { ActivesurveyComponent } from './pages/activesurvey/activesurvey.component';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+import { SurveyStoreComponent } from './survey-store/survey-store.component';
+
+
+
 
 @NgModule({
   declarations: [
@@ -22,11 +30,18 @@ import { BasePageComponent } from './partials/base-page/base-page.component';
     LoginComponent,
     SignupComponent,
     ContactComponent,
-    BasePageComponent
+    BasePageComponent,
+    ButtonComponent,
+    ActivesurveyComponent,
+    SurveyStoreComponent,
+
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
