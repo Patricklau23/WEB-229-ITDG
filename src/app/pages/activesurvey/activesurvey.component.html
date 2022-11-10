@@ -1,8 +1,8 @@
-<div class="p-4"></div>
+<div class="mt-5"></div>
 <div class="row h-100 justify-content-center align-items-center">
     <div class="col-lg-5">
 <div class="form-group" action="" method="post">
-  <form>
+  <form id="my-form">
   
     <div>
         <input type="text" id="text" class="form-control" placeholder="Your Survey Topic" aria-label="Text" aria-describedby="basic-addon1">
@@ -63,7 +63,7 @@
     
 
 
-    <div class="p-4"></div>
+    <div class="mt-4"></div>
 <div class="text-center">
    <!-- Button trigger modal -->
 <button type="button" (click)="clickAddSurvey()" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
@@ -107,11 +107,11 @@
   </div>
 
 
-  <div class="p-3"></div>
+  <div class="mt-4"></div>
 
   <div class="row justify-content-md-center">
         <div class= "col col-lg-2">
-            <button type="button" class="btn btn-primary">
+            <button type="button" (click)="SubmitBtn()" class="btn btn-primary" id="submit-form">
                 FINISH!
             </button>
         </div>
@@ -124,3 +124,4 @@
     
   </form>
 </div>
+

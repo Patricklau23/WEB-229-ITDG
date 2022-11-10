@@ -16,6 +16,8 @@ import { ActivesurveyComponent } from './pages/activesurvey/activesurvey.compone
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { SurveyStoreComponent } from './survey-store/survey-store.component';
+import { ConfirmComponent } from './pages/confirm/confirm.component';
+import { TemplateComponent } from './pages/template/template.component';
 
 
 
@@ -34,6 +36,8 @@ import { SurveyStoreComponent } from './survey-store/survey-store.component';
     ButtonComponent,
     ActivesurveyComponent,
     SurveyStoreComponent,
+    ConfirmComponent,
+    TemplateComponent,
 
 
   ],

@@ -82,6 +82,11 @@ export class ActivesurveyComponent implements OnInit {
     this.router.navigateByUrl('/home');
    }
 
+  //Submit and redirect to confirm page (tem)
+   SubmitBtn():void{
+    this.router.navigateByUrl('/confirmpage');
+     }
+
    //mainly show update button and show question
    onEdit(row:any){
     this.showAdd = false;
