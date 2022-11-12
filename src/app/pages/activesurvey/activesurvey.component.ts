@@ -100,7 +100,7 @@ export class ActivesurveyComponent implements OnInit {
    updateSurveyDetails(){
     //json database object = form input value, display update value on form 
     this.surveyModelObj.question = this.formValue.value.question;
-
+    
     this.api.updateSurvey(this.surveyModelObj, this.surveyModelObj.id).
     subscribe(res=>{
       alert("Updated Successfully");
